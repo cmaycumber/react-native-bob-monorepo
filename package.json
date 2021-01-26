@@ -36,6 +36,9 @@
       "pre-commit": "yarn lint && yarn typescript && yarn test"
     }
   },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
   "jest": {
     "testEnvironment": "node",
     "testRegex": "/__tests__/.*\\.(test|spec)\\.(js|tsx?)$",
