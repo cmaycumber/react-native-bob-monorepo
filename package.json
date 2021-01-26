@@ -55,7 +55,20 @@
   },
   "eslintConfig": {
     "extends": [
-      "universe"
+      "universe",
+      "universe/shared/typescript-analysis"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx",
+          "*.d.ts"
+        ],
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        }
+      }
     ]
   },
   "detox": {

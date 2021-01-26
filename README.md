@@ -5,17 +5,20 @@ A monorepo starter for react-native-builder-bob packages
 ## Installation
 
 ```sh
-npm install react-native-bob-monorepo
+yarn add @react-native-bob-monorepo/package1
+yarn add @react-native-bob-monorepo/package2
 ```
 
 ## Usage
 
 ```js
-import BobMonorepo from "react-native-bob-monorepo";
+import Package1 from "@react-native-bob-monorepo/package1";
+import Package2 from "@react-native-bob-monorepo/package1";
 
 // ...
 
-const result = await BobMonorepo.multiply(3, 7);
+const result = Package1;
+console.log(2 * result === Package2)
 ```
 
 ## Contributing
