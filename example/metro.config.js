@@ -1,12 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-const path = require('path');
-const fs = require('fs');
-const escape = require('escape-string-regexp');
-const blacklist = require('metro-config/src/defaults/blacklist');
+const escape = require("escape-string-regexp");
+const fs = require("fs");
+const blacklist = require("metro-config/src/defaults/blacklist");
+const path = require("path");
 
-const root = path.resolve(__dirname, '..');
-const packages = path.resolve(root, 'packages');
+const root = path.resolve(__dirname, "..");
+const packages = path.resolve(root, "packages");
 
 // List all packages under `packages/`
 const workspaces = fs
@@ -15,15 +15,15 @@ const workspaces = fs
   .filter(
     (p) =>
       fs.statSync(p).isDirectory() &&
-      fs.existsSync(path.join(p, 'package.json'))
+      fs.existsSync(path.join(p, "package.json"))
   );
 
 // Get the list of dependencies for all packages in the monorepo
-const modules = ['@expo/vector-icons']
+const modules = ["@expo/vector-icons"]
   .concat(
     ...workspaces.map((it) => {
       const pak = JSON.parse(
-        fs.readFileSync(path.join(it, 'package.json'), 'utf8')
+        fs.readFileSync(path.join(it, "package.json"), "utf8")
       );
 
       // We need to make sure that only one version is loaded for peerDependencies
@@ -35,7 +35,7 @@ const modules = ['@expo/vector-icons']
   .filter(
     (m, i, self) =>
       // Remove duplicates and package names of the packages in the monorepo
-      self.lastIndexOf(m) === i && !m.startsWith('@react-native-bob-monorepo/')
+      self.lastIndexOf(m) === i && !m.startsWith("@react-native-bob-monorepo/")
   );
 
 module.exports = {
@@ -53,7 +53,7 @@ module.exports = {
         ...workspaces.map((it) =>
           modules.map(
             (m) =>
-              new RegExp(`^${escape(path.join(it, 'node_modules', m))}\\/.*$`)
+              new RegExp(`^${escape(path.join(it, "node_modules", m))}\\/.*$`)
           )
         )
       )
@@ -62,7 +62,7 @@ module.exports = {
     // When we import a package from the monorepo, metro won't be able to find their deps
     // We need to specify them in `extraNodeModules` to tell metro where to find them
     extraNodeModules: modules.reduce((acc, name) => {
-      acc[name] = path.join(root, 'node_modules', name);
+      acc[name] = path.join(root, "node_modules", name);
       return acc;
     }, {}),
   },
@@ -89,4 +89,4 @@ module.exports = {
       },
     }),
   },
-}
+};

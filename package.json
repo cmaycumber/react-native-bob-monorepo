@@ -19,6 +19,7 @@
   "author": "Chad Maycumber <chad.maycumber11@gmail.com> (https://github.com/cmaycumber/)",
   "scripts": {
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "fix": "eslint --fix \"**/*.{js,ts,tsx}\" && manypkg fix && prettier --write \"**/*.{js,ts,tsx}\"",
     "typescript": "tsc --noEmit --composite false",
     "test": "jest",
     "build": "lerna run prepare",
@@ -37,7 +38,9 @@
     }
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "jest": {
     "testEnvironment": "node",
@@ -51,7 +54,9 @@
     "preset": "react-native"
   },
   "eslintConfig": {
-    "extends": "@react-native-community/eslint"
+    "extends": [
+      "universe"
+    ]
   },
   "detox": {
     "test-runner": "jest",
@@ -78,12 +83,14 @@
   "dependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@manypkg/cli": "^0.17.0",
-    "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "babel-jest": "^26.6.1",
     "codecov": "^3.8.0",
     "commitlint": "^11.0.0",
     "eslint": "^7.18.0",
+    "eslint-config-universe": "^7.0.1",
     "husky": "^4.3.0",
     "jest": "^26.6.1",
     "lerna": "^3.22.1",
