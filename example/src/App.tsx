@@ -1,19 +1,15 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import BobMonorepo from 'react-native-bob-monorepo';
+import Package1 from '@react-native-bob-monorepo/package1';
+import Package2 from '@react-native-bob-monorepo/package2';
 
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    BobMonorepo.multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Package {Package1}</Text>
+      <Text>Package {Package2}</Text>
     </View>
   );
 }

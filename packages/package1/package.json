@@ -1,0 +1,69 @@
+{
+  "name": "@react-native-bob-monorepo/package1",
+  "description": "React native bob monorepo package",
+  "version": "5.9.2",
+  "keywords": [
+    "react-native",
+    "react-native-bob-monorepo",
+    "ios",
+    "android"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-native-bob-monorepo/react-native-bob-monorepo.git",
+    "directory": "packages/package1"
+  },
+  "bugs": {
+    "url": "https://github.com/react-native-bob-monorepo/react-native-bob-monorepo/issues"
+  },
+  "homepage": "https://github.com/react-native-bob-monorepo/react-native-bob-monorepo.git#readme",
+  "main": "lib/commonjs/index.js",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "bob build",
+    "clean": "del lib"
+  },
+  "devDependencies": {
+    "@testing-library/react-native": "^7.1.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-native": "^0.63.30",
+    "del-cli": "^3.0.1",
+    "react": "~16.13.1",
+    "react-dom": "^16.13.1",
+    "react-native": "0.63.4",
+    "react-native-builder-bob": "^0.17.0",
+    "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
+}
